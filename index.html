@@ -1,4 +1,698 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddharth Freelancer | 3D & Motion Websites For Sale</title>
+  <style>
+    :root {
+      --bg-dark: #060913;
+      --bg-card: rgba(17, 24, 46, 0.72);
+      --border-glow: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-1: #38bdf8;
+      --accent-2: #818cf8;
+      --accent-3: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* 8K Ultra Crisp Grid + Ambient Motion Orbs */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      z-index: -3;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      z-index: -2;
+      pointer-events: none;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 420px;
+      height: 420px;
+      background: rgba(56, 189, 248, 0.22);
+      top: -80px;
+      left: -80px;
+    }
+
+    .orb-2 {
+      width: 460px;
+      height: 460px;
+      background: rgba(129, 140, 248, 0.22);
+      bottom: -100px;
+      right: -100px;
+      animation-delay: -5s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(45px, -35px) scale(1.08); }
+      100% { transform: translate(-25px, 40px) scale(0.96); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.28); }
+      50% { box-shadow: 0 0 38px rgba(129, 140, 248, 0.55); }
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 9, 19, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-1);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #04101f;
+      animation: pulseGlow 3.2s infinite ease-in-out;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ffffff;
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    /* Hero + Interactive 3D Stage */
+    .hero {
+      max-width: 1200px;
+      margin: 48px auto 24px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent-1);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4.5vw, 3.5rem);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent-1), #c084fc, var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.04rem;
+      margin-bottom: 26px;
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* 3D Perspective Showcase Card */
+    .stage-3d {
+      perspective: 1100px;
+    }
+
+    .card-3d {
+      background: linear-gradient(160deg, rgba(30, 41, 75, 0.85), rgba(10, 15, 32, 0.92));
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 28px;
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-3d::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.25), transparent 60%);
+      pointer-events: none;
+    }
+
+    .layer-float {
+      transform: translateZ(36px);
+    }
+
+    .cube-visual {
+      width: 96px;
+      height: 96px;
+      margin: 10px auto 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #ec4899);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1.45rem;
+      color: #060913;
+      animation: spinTilt 7s linear infinite;
+      box-shadow: 0 12px 35px rgba(129, 140, 248, 0.45);
+    }
+
+    @keyframes spinTilt {
+      0% { transform: rotateY(0deg) rotateX(12deg); }
+      50% { transform: rotateY(180deg) rotateX(-12deg); }
+      100% { transform: rotateY(360deg) rotateX(12deg); }
+    }
+
+    .spec-list {
+      list-style: none;
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+
+    /* Motion Marquee */
+    .marquee-wrap {
+      margin: 44px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 23, 42, 0.55);
+      overflow: hidden;
+      padding: 14px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 24s linear infinite;
+    }
+
+    .marquee-item {
+      padding: 0 28px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--accent-1);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    /* Sections & Packages */
+    .section {
+      max-width: 1200px;
+      margin: 64px auto;
+      padding: 0 24px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .pkg-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 26px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-1);
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent-1);
+      margin: 12px 0 16px;
+    }
+
+    .pkg-card ul {
+      list-style: none;
+      margin-bottom: 22px;
+      display: grid;
+      gap: 8px;
+      color: #cbd5e1;
+      font-size: 0.93rem;
+    }
+
+    /* Direct Contact & Instant Message Box */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+
+    .info-row {
+      margin: 14px 0;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .info-row strong {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--accent-1);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(6, 9, 19, 0.78);
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    .send-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .send-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <header>
+    <div class="nav">
+      <div class="logo">SIDDHARTH 3D & WEB</div>
+      <div class="nav-links">
+        <a href="#packages">Websites For Sale</a>
+        <a href="#contact">Direct Message</a>
+        <a href="https://wa.me/919153353021" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="badge">3D MOTION • GRAPHIC DESIGN • ULTRA-SHARP WEB</span>
+      <h1>High-Impact Websites <span>Built For Sales & 3D Motion</span></h1>
+      <p>
+        Apne business, brand, ya agency ke liye custom animated websites kharidein. Smooth motion graphics, interactive 3D cards, aur direct WhatsApp / Email inquiry system ke saath ready.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Buy / Send Message</a>
+        <a href="https://wa.me/919153353021?text=Hi%20Siddharth%2C%20mujhe%20website%20ke%20baare%20mein%20baat%20karni%20hai." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Chat on WhatsApp</a>
+        <a href="mailto:siddharth6731@gmail.com?subject=Website%20Inquiry" class="btn btn-outline">Direct Email</a>
+      </div>
+    </div>
+
+    <div class="stage-3d">
+      <div class="card-3d" id="tiltCard">
+        <div class="layer-float">
+          <div class="cube-visual">3D</div>
+          <h3 style="text-align: center; font-size: 1.25rem;">Interactive 3D Motion Engine</h3>
+          <p style="text-align: center; color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">
+            Mouse ya touch move karke 3D depth aur lighting feel karein.
+          </p>
+          <ul class="spec-list">
+            <li>✦ Smooth CSS 3D Perspective &amp; Kinetic Motion</li>
+            <li>✦ Crisp High-DPI Visuals &amp; Graphic Accents</li>
+            <li>✦ Instant WhatsApp &amp; Email Lead Capture</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">★ ULTRA 3D WEBSITES</span>
+      <span class="marquee-item">★ GRAPHIC MOTION</span>
+      <span class="marquee-item">★ 8K VISUAL CLARITY</span>
+      <span class="marquee-item">★ READY FOR SALES</span>
+      <span class="marquee-item">★ DIRECT WHATSAPP &amp; EMAIL</span>
+      <span class="marquee-item">★ ULTRA 3D WEBSITES</span>
+      <span class="marquee-item">★ GRAPHIC MOTION</span>
+      <span class="marquee-item">★ 8K VISUAL CLARITY</span>
+      <span class="marquee-item">★ READY FOR SALES</span>
+      <span class="marquee-item">★ DIRECT WHATSAPP &amp; EMAIL</span>
+    </div>
+  </div>
+
+  <section id="packages" class="section reveal">
+    <div class="section-head">
+      <h2>Website Packages For Sale</h2>
+      <p>Apne budget aur business requirement ke hisaab se package chunein aur turant message bhejein.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="pkg-card">
+        <div>
+          <h3>Starter Landing Page</h3>
+          <div class="price">Custom Quote</div>
+          <ul>
+            <li>✓ Modern Animated Hero &amp; Sections</li>
+            <li>✓ Mobile Responsive Layout</li>
+            <li>✓ Direct WhatsApp &amp; Email Button</li>
+            <li>✓ Fast Launch Ready</li>
+          </ul>
+        </div>
+        <button class="btn btn-primary" onclick="selectPackage('Starter Landing Page')">Select &amp; Message</button>
+      </div>
+
+      <div class="pkg-card" style="border-color: rgba(56, 189, 248, 0.55);">
+        <div>
+          <span class="badge" style="margin-bottom: 8px;">MOST POPULAR</span>
+          <h3>3D Motion Business Website</h3>
+          <div class="price">Custom Quote</div>
+          <ul>
+            <li>✓ Interactive 3D Cards &amp; Motion Effects</li>
+            <li>✓ Custom Graphic Banners &amp; Sections</li>
+            <li>✓ Lead Form → WhatsApp &amp; Email</li>
+            <li>✓ Custom Domain &amp; Hosting Setup Support</li>
+          </ul>
+        </div>
+        <button class="btn btn-primary" onclick="selectPackage('3D Motion Business Website')">Select &amp; Message</button>
+      </div>
+
+      <div class="pkg-card">
+        <div>
+          <h3>Ultra 3D Brand Experience</h3>
+          <div class="price">Custom Quote</div>
+          <ul>
+            <li>✓ Heavy Motion Graphics &amp; 3D Stage</li>
+            <li>✓ Brand Identity &amp; Sales Funnel Layout</li>
+            <li>✓ Priority Support &amp; Revisions</li>
+            <li>✓ Direct Client Inquiry Routing</li>
+          </ul>
+        </div>
+        <button class="btn btn-primary" onclick="selectPackage('Ultra 3D Brand Experience')">Select &amp; Message</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section reveal">
+    <div class="section-head">
+      <h2>Direct WhatsApp &amp; Email Message</h2>
+      <p>Form bharein aur seedha WhatsApp ya apne Email app se message bhejein.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <h3>Direct Contact Details</h3>
+        <div class="info-row">
+          <strong>Phone / WhatsApp Number</strong>
+          <span>+91 9153353021</span>
+        </div>
+        <div class="info-row">
+          <strong>Email Address</strong>
+          <span>siddharth6731@gmail.com</span>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
+          <a href="https://wa.me/919153353021" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Open WhatsApp</a>
+          <a href="mailto:siddharth6731@gmail.com" class="btn btn-outline">Send Email</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <form id="directMessageForm">
+          <div class="form-group">
+            <label for="clientName">Your Name</label>
+            <input type="text" id="clientName" placeholder="Apna naam likhein" required />
+          </div>
+          <div class="form-group">
+            <label for="clientPhone">Your Phone / WhatsApp</label>
+            <input type="tel" id="clientPhone" placeholder="Apna mobile number likhein" required />
+          </div>
+          <div class="form-group">
+            <label for="packageSelect">Selected Package</label>
+            <select id="packageSelect">
+              <option value="Starter Landing Page">Starter Landing Page</option>
+              <option value="3D Motion Business Website" selected>3D Motion Business Website</option>
+              <option value="Ultra 3D Brand Experience">Ultra 3D Brand Experience</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="clientMsg">Message / Project Details</label>
+            <textarea id="clientMsg" rows="3" placeholder="Apni website ya requirement ke baare mein likhein..." required></textarea>
+          </div>
+
+          <div class="send-row">
+            <button type="button" id="sendWhatsAppBtn" class="btn btn-whatsapp">Send on WhatsApp</button>
+            <button type="button" id="sendEmailBtn" class="btn btn-primary">Send on Email</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Siddharth Freelancer | Phone: +91 9153353021 | Email: siddharth6731@gmail.com</p>
+  </footer>
+
+  <script>
+    // Interactive 3D Card Tilt
+    const tiltCard = document.getElementById("tiltCard");
+    if (tiltCard) {
+      tiltCard.addEventListener("mousemove", (e) => {
+        const rect = tiltCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateY = ((x / rect.width) - 0.5) * 26;
+        const rotateX = ((0.5 - (y / rect.height))) * 26;
+        tiltCard.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      });
+
+      tiltCard.addEventListener("mouseleave", () => {
+        tiltCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+      });
+    }
+
+    // Scroll Reveal Observer
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach((el) => observer.observe(el));
+
+    // Package Selection Helper
+    function selectPackage(pkgName) {
+      const selectEl = document.getElementById("packageSelect");
+      if (selectEl) {
+        selectEl.value = pkgName;
+      }
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Build Formatted Message
+    function getMessageText() {
+      const name = document.getElementById("clientName").value.trim() || "Client";
+      const phone = document.getElementById("clientPhone").value.trim() || "Not provided";
+      const pkg = document.getElementById("packageSelect").value;
+      const details = document.getElementById("clientMsg").value.trim() || "Website inquiry";
+
+      return `Hello Siddharth,\nName: ${name}\nPhone: ${phone}\nPackage: ${pkg}\nDetails: ${details}`;
+    }
+
+    // Direct WhatsApp Send
+    document.getElementById("sendWhatsAppBtn").addEventListener("click", () => {
+      const text = encodeURIComponent(getMessageText());
+      window.open(`https://wa.me/919153353021?text=${text}`, "_blank", "noopener,noreferrer");
+    });
+
+    // Direct Email Send
+    document.getElementById("sendEmailBtn").addEventListener("click", () => {
+      const name = document.getElementById("clientName").value.trim() || "Client";
+      const subject = encodeURIComponent(`Website Inquiry from ${name}`);
+      const body = encodeURIComponent(getMessageText());
+      window.location.href = `mailto:siddharth6731@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
 
 
       
